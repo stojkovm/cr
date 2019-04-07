@@ -2,14 +2,16 @@
   require 'classes/db.php';
   require 'classes/phpfix.php';
   require 'classes/user.php';
+
+  
   if (isset($_COOKIE['auth'])){
     $user = User::getuserfromcookie($_COOKIE['auth']);
     if (!isset($user)) {
-      header("Location: /login.php");
+      header("Location: /cr-master/login.php");
       die();
     }
   } else {
-    header("Location: /login.php");
+    header("Location: /cr-master/login.php");
     die();
   }
   if(isset($_POST["submit"])) {
@@ -27,7 +29,7 @@
     <h3>Your files</h3>
       <ul>
         <?php foreach (User::getfiles($user) as $file) { ?>
-          <li><a href="/files/<?php echo h($user); ?>/<?php echo h($file); ?>"><?php echo h($file); ?> </a></li>
+          <li><a href="/cr-master/files/<?php echo h($user); ?>/<?php echo h($file); ?>"><?php echo h($file); ?> </a></li>
         <?php } ?> 
       </ul>
     <h3>Upload (only PDF)</h3>

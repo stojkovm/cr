@@ -1,5 +1,4 @@
 <?php
-
 class JWT {
   
   public static function sign($data) {

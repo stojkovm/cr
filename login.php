@@ -2,11 +2,12 @@
   require 'classes/db.php';
   require 'classes/phpfix.php';
   require 'classes/user.php';
+  
 
   if ((isset($_POST['username']) and isset($_POST['password']))){
     if (User::login($_POST['username'], $_POST['password'])){
       setcookie("auth", User::createcookie($_POST['username'], $_POST['password']));
-      header( 'Location: /index.php' ) ;
+      header( 'Location: /cr-master/index.php' ) ;
       die();
     } else {
       $error = "Invalid credentials";
@@ -24,7 +25,7 @@
           <span class="text text-danger"><b><?php echo $error; ?></b></span>
       <?php } ?>
 
-    <form action="/login.php" method="POST" class="form-horizontal">
+    <form action="/cr-master/login.php" method="POST" class="form-horizontal">
       <div class="form-group">
         <label for="name">Username:</label>
         <input type="text" name="username"  class="form-control"  autofocus="true">

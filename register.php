@@ -3,11 +3,12 @@
   require 'classes/phpfix.php';
   require 'classes/user.php';
 
+  
   if ((isset($_POST['username']) and isset($_POST['password']) and isset($_POST['password_again']))){
     if ($_POST['password'] === $_POST['password_again']) {
       if (User::register($_POST['username'], $_POST['password'])){
         setcookie("auth", User::createcookie($_POST['username'], $_POST['password']));
-        header( 'Location: /index.php' ) ;
+        header( 'Location: /cr-master/index.php' ) ;
       } else {
         $error = "Can't create user: user exists";
       }
@@ -28,7 +29,7 @@
           <span class="text text-danger"><b><?php echo $error; ?></b></span>
       <?php } ?>
 
-    <form action="/register.php" method="POST" class="form-horizontal">
+    <form action="/cr-master/register.php" method="POST" class="form-horizontal">
       <div class="form-group">
         <label for="name">Username:</label>
         <input type="text" name="username"  class="form-control"  autofocus="true">
